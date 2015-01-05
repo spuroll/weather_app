@@ -1,0 +1,20 @@
+<body>
+
+    <h1>Local Weather</h1>
+
+    <div>Your current IP address: <%= @ip %></div>
+    <div>What ZIP code would you like to associate with this address?</div>
+    
+    <div>
+    <%= form_for(:locale, :url => {:action => "create"}) do |f|%>
+      <%= f.text_field :zip %>
+      <%= f.hidden_field :ip, :value => @ip %>
+      <%= submit_tag("Add ZIP") %>
+    <% end %>
+    </div>
+
+    <div style="color:red"><% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%></div>
+    
+</body>

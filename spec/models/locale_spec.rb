@@ -5,6 +5,11 @@ RSpec.describe Locale, :type => :model do
     expect(FactoryGirl.create(:locale)).to be_valid
   end
   
-  it "is invalid without a zip code"
-  it "is invalid without an ip address"
+  it "is invalid without a zip code" do
+    expect(FactoryGirl.build(:locale, zip: nil)).to be_invalid
+  end
+  
+  it "is invalid without an ip address" do
+    expect(FactoryGirl.build(:locale, ip: nil)).to be_invalid
+  end
 end
